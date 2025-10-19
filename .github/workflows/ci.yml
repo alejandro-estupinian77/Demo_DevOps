@@ -15,21 +15,16 @@ jobs:
         node-version: '18'
         
     - name: 📦 Instalar dependencias
-      run: |
-        cd src/backend
-        npm install
+      run: npm install
         
     - name: 🧪 Ejecutar pruebas automáticas
-      run: |
-        cd src/backend
-        npm test
+      run: npm test
         
     - name: 🐳 Construir contenedor Docker
       run: docker build -t plataforma-educativa .
         
-    - name: ✅ Verificar construcción
+    - name: ✅ Verificar construcción exitosa
       run: |
         echo "🎉 ¡CI COMPLETADO EXITOSAMENTE!"
-        echo "✅ Pruebas pasadas"
-        echo "✅ Contenedor construido"
-        echo "✅ Aplicación lista para producción"
+        echo "✅ Aplicación construida correctamente"
+        echo "✅ Lista para producción"

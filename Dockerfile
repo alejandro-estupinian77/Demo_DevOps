@@ -1,7 +1,16 @@
 FROM node:18-alpine
+
 WORKDIR /app
-COPY src/backend/package*.json ./
+
+# Copiar package.json (ahora está en raíz)
+COPY package*.json ./
+
+# Instalar dependencias
 RUN npm install
-COPY src/backend/ .
+
+# Copiar TODO el código (ahora todo está accesible)
+COPY . .
+
 EXPOSE 3000
+
 CMD ["node", "server.js"]
