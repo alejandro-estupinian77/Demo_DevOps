@@ -1,0 +1,11 @@
+# .github/workflows/cd.yml (por agregar)  
+name: CD
+on:
+  push:
+    branches: [main]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: docker build -t mi-app .  # ← Esto usa tu Dockerfile
+      - run: docker push mi-app        # ← Esto despliega tu app

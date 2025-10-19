@@ -1,0 +1,35 @@
+name: 🧪 CI - Pipeline DevOps Completo
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 📥 Descargar código
+      uses: actions/checkout@v4
+      
+    - name: 🟢 Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: 📦 Instalar dependencias
+      run: |
+        cd src/backend
+        npm install
+        
+    - name: 🧪 Ejecutar pruebas automáticas
+      run: |
+        cd src/backend
+        npm test
+        
+    - name: 🐳 Construir contenedor Docker
+      run: docker build -t plataforma-educativa .
+        
+    - name: ✅ Verificar construcción
+      run: |
+        echo "🎉 ¡CI COMPLETADO EXITOSAMENTE!"
+        echo "✅ Pruebas pasadas"
+        echo "✅ Contenedor construido"
+        echo "✅ Aplicación lista para producción"
